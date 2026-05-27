@@ -1,10 +1,14 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-const signToken = (id) =>
+
+
+const signToken = (id) => {
     jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN || "30d",
     });
+};
+
 
 export const register = async (req, res) => {
     try {
@@ -86,11 +90,13 @@ export const login = async (req, res) => {
     }
 };
 
+
 export const me = async (req, res) => {
     res.json({
         user: req.user,
     });
 };
+
 
 export const updateProfile = async (req, res) => {
     try {
@@ -109,9 +115,8 @@ export const updateProfile = async (req, res) => {
 
         await user.save();
 
-        res.json({
-            user,
-        });
+        res.json({ user });
+
     } catch (err) {
         res.status(500).json({
             message: err.message,

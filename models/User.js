@@ -38,6 +38,9 @@ const userSchema = new mongoose.Schema(
     }
 );
 
+
+
+
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
 
@@ -47,6 +50,7 @@ userSchema.pre("save", async function (next) {
 
     next();
 });
+
 
 userSchema.methods.matchPassword = function (plain) {
     return bcrypt.compare(plain, this.password);
@@ -59,5 +63,6 @@ userSchema.methods.toJSON = function () {
 
     return obj;
 };
+
 
 export default mongoose.model("User", userSchema);

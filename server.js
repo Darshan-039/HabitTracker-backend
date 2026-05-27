@@ -17,6 +17,7 @@ const allowedOrigins = (process.env.CLIENT_URL || "")
     .map((s) => s.trim())
     .filter(Boolean);
 
+
 const corsOptions = {
     origin(origin, cb) {
         // Allow requests with no origin
@@ -41,7 +42,6 @@ const corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-
 app.use(cors(corsOptions));
 app.use("*", cors(corsOptions));
 app.use(express.json({ limit: "1mb" }));
@@ -62,6 +62,7 @@ app.use("/api/ai", aiRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+
 
 const PORT = process.env.PORT || 8000;
 

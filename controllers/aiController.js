@@ -7,10 +7,7 @@ import HabitLog from "../models/HabitLog.js";
 
 
 const buildWeeklyContext = async (userId) => {
-    const habits = await Habit.find({
-        userId,
-        isArchived: false,
-    });
+    const habits = await Habit.find({ userId, isArchived: false, });
 
     const days = lastNDays(7);
 
@@ -159,8 +156,7 @@ export const recoveryPlan = async (req, res) => {
             userId: req.user._id,
         });
 
-        if (!habit)
-            return res.status(404).json({ message: "Habit not found" });
+        if (!habit) return res.status(404).json({ message: "Habit not found" });
 
         const logs = await HabitLog.find({
             userId: req.user._id,
@@ -251,7 +247,6 @@ export const chatAnalysis = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
-
 
 
 export const morningMotivation = async (req, res) => {

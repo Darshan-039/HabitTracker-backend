@@ -7,9 +7,9 @@ import Habit from "../models/Habit.js";
 import HabitLog from "../models/HabitLog.js";
 import AIInsight from "../models/AIInsight.js";
 
-const EMAIL = "alex@timetoprogram.com";
-const PASSWORD = "password123";
-const NAME = "Alex Rivera";
+const EMAIL = "admin@gmail.com";
+const PASSWORD = "admin@456";
+const NAME = "Admin";
 
 
 const HABITS = [

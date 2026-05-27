@@ -77,6 +77,7 @@ const habitSchema = new mongoose.Schema(
   }
 );
 
+
 export const HABIT_CATEGORIES = CATEGORIES;
 
 export default mongoose.model("Habit", habitSchema);

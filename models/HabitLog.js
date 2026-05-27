@@ -31,6 +31,7 @@ const habitLogSchema = new mongoose.Schema(
     }
 );
 
+
 habitLogSchema.index(
     {
         userId: 1,
