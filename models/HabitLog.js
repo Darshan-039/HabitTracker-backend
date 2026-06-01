@@ -44,4 +44,5 @@ habitLogSchema.index(
 );
 
 
+
 export default mongoose.model("HabitLog", habitLogSchema);

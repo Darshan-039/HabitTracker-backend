@@ -9,6 +9,7 @@ import {
 
 
 
+// Mark a habit true
 export const markComplete = async (req, res) => {
     try {
         const { habitId, date } = req.body;
@@ -34,6 +35,8 @@ export const markComplete = async (req, res) => {
     }
 };
 
+
+// Unmark a habit 
 export const unmarkComplete = async (req, res) => {
     try {
         const { habitId, date } = req.body;
@@ -47,12 +50,14 @@ export const unmarkComplete = async (req, res) => {
         });
 
         res.json({ message: "Unmarked" });
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
 
+// Get all habits completed today
 export const getToday = async (req, res) => {
     try {
         const logs = await HabitLog.find({
@@ -61,11 +66,14 @@ export const getToday = async (req, res) => {
         });
 
         res.json(logs);
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
+
+// Get all habits completed in a date range
 export const getRange = async (req, res) => {
     try {
         const { start, end } = req.query;
@@ -76,11 +84,14 @@ export const getRange = async (req, res) => {
         });
 
         res.json(logs);
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
+
+// Get heatmap data for last 90 days
 export const getHeatmap = async (req, res) => {
     try {
         const days = last90Days();
